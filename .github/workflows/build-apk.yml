@@ -40,7 +40,7 @@ jobs:
         run: cp orcamento_flet.py main.py
 
       - name: Construir o APK (Demora uns 5 a 10 minutos)
-        run: flet build apk
+        run: flet build apk --project solucao_3j
 
       - name: Disponibilizar APK para Download
         uses: actions/upload-artifact@v4
