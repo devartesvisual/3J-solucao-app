@@ -15,6 +15,17 @@ jobs:
       - name: Baixar código do repositório
         uses: actions/checkout@v4
 
+      - name: Configurar Java JDK (Necessário para Android)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Configurar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
@@ -28,7 +39,7 @@ jobs:
       - name: Preparar arquivo Principal (main.py)
         run: cp orcamento_flet.py main.py
 
-      - name: Construir o APK (Demora uns 5 minutos)
+      - name: Construir o APK (Demora uns 5 a 10 minutos)
         run: flet build apk
 
       - name: Disponibilizar APK para Download
